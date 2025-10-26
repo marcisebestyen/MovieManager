@@ -1,0 +1,51 @@
+@page "/movie/{Id:int}"
+@rendermode InteractiveServer
+@inject MovieService MovieSvc
+@inject NavigationManager Navigation
+
+<PageTitle>Movie Details</PageTitle>
+
+@if (movie == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="mb-4">
+        <a href="/" class="btn btn-sm btn-outline-secondary">← Back to List</a>
+    </div>
+
+    <h1>@movie.Title</h1>
+    <p class="lead text-muted">Directed by @movie.Director</p>
+
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <strong>Year</strong>
+            <p>@movie.Year</p>
+        </div>
+        <div class="col-md-3">
+            <strong>Rating</strong>
+            <p>@movie.Rating / 10</p>
+        </div>
+        <div class="col-md-3">
+            <strong>Genre</strong>
+            <p>@movie.Genre</p>
+        </div>
+    </div>
+
+    <hr class="my-4"/>
+
+    <a href="/edit/@movie.Id" class="btn btn-primary">Edit This Movie</a>
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private Movie? movie;
+
+    protected override async Task OnInitializedAsync()
+    {
+        movie = await MovieSvc.GetMovieByIdAsync(Id);
+    }
+
+}

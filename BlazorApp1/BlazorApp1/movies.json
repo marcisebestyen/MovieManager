@@ -1,0 +1,802 @@
+[
+  {
+    "Id": 1,
+    "Title": "Big Stan",
+    "Director": "Rob Schneider",
+    "Year": 2007,
+    "Rating": 9.4,
+    "Genre": "Comedy"
+  },
+  {
+    "Id": 2,
+    "Title": "The Shawshank Redemption",
+    "Director": "Frank Darabont",
+    "Year": 1994,
+    "Rating": 9.3,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 3,
+    "Title": "The Godfather",
+    "Director": "Francis Ford Coppola",
+    "Year": 1972,
+    "Rating": 9.2,
+    "Genre": "Crime"
+  },
+  {
+    "Id": 4,
+    "Title": "The Dark Knight",
+    "Director": "Christopher Nolan",
+    "Year": 2008,
+    "Rating": 9.0,
+    "Genre": "Action"
+  },
+  {
+    "Id": 5,
+    "Title": "Pulp Fiction",
+    "Director": "Quentin Tarantino",
+    "Year": 1994,
+    "Rating": 8.9,
+    "Genre": "Crime"
+  },
+  {
+    "Id": 6,
+    "Title": "Forrest Gump",
+    "Director": "Robert Zemeckis",
+    "Year": 1994,
+    "Rating": 8.8,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 7,
+    "Title": "Inception",
+    "Director": "Christopher Nolan",
+    "Year": 2010,
+    "Rating": 8.8,
+    "Genre": "Sci-Fi"
+  },
+  {
+    "Id": 8,
+    "Title": "The Matrix",
+    "Director": "Lana Wachowski, Lilly Wachowski",
+    "Year": 1999,
+    "Rating": 8.7,
+    "Genre": "Sci-Fi"
+  },
+  {
+    "Id": 9,
+    "Title": "Spirited Away",
+    "Director": "Hayao Miyazaki",
+    "Year": 2001,
+    "Rating": 8.6,
+    "Genre": "Animation"
+  },
+  {
+    "Id": 10,
+    "Title": "Interstellar",
+    "Director": "Christopher Nolan",
+    "Year": 2014,
+    "Rating": 8.7,
+    "Genre": "Sci-Fi"
+  },
+  {
+    "Id": 11,
+    "Title": "Fight Club",
+    "Director": "David Fincher",
+    "Year": 1999,
+    "Rating": 8.8,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 12,
+    "Title": "The Lord of the Rings: The Fellowship of the Ring",
+    "Director": "Peter Jackson",
+    "Year": 2001,
+    "Rating": 8.8,
+    "Genre": "Fantasy"
+  },
+  {
+    "Id": 13,
+    "Title": "The Lord of the Rings: The Two Towers",
+    "Director": "Peter Jackson",
+    "Year": 2002,
+    "Rating": 8.7,
+    "Genre": "Fantasy"
+  },
+  {
+    "Id": 14,
+    "Title": "The Lord of the Rings: The Return of the King",
+    "Director": "Peter Jackson",
+    "Year": 2003,
+    "Rating": 9.0,
+    "Genre": "Fantasy"
+  },
+  {
+    "Id": 15,
+    "Title": "Gladiator",
+    "Director": "Ridley Scott",
+    "Year": 2000,
+    "Rating": 8.5,
+    "Genre": "Action"
+  },
+  {
+    "Id": 16,
+    "Title": "Goodfellas",
+    "Director": "Martin Scorsese",
+    "Year": 1990,
+    "Rating": 8.7,
+    "Genre": "Crime"
+  },
+  {
+    "Id": 17,
+    "Title": "The Silence of the Lambs",
+    "Director": "Jonathan Demme",
+    "Year": 1991,
+    "Rating": 8.6,
+    "Genre": "Thriller"
+  },
+  {
+    "Id": 18,
+    "Title": "Se7en",
+    "Director": "David Fincher",
+    "Year": 1995,
+    "Rating": 8.6,
+    "Genre": "Crime"
+  },
+  {
+    "Id": 19,
+    "Title": "Saving Private Ryan",
+    "Director": "Steven Spielberg",
+    "Year": 1998,
+    "Rating": 8.6,
+    "Genre": "War"
+  },
+  {
+    "Id": 20,
+    "Title": "Whiplash",
+    "Director": "Damien Chazelle",
+    "Year": 2014,
+    "Rating": 8.5,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 21,
+    "Title": "Parasite",
+    "Director": "Bong Joon Ho",
+    "Year": 2019,
+    "Rating": 8.6,
+    "Genre": "Thriller"
+  },
+  {
+    "Id": 22,
+    "Title": "Joker",
+    "Director": "Todd Phillips",
+    "Year": 2019,
+    "Rating": 8.4,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 23,
+    "Title": "Avengers: Endgame",
+    "Director": "Anthony Russo, Joe Russo",
+    "Year": 2019,
+    "Rating": 8.4,
+    "Genre": "Action"
+  },
+  {
+    "Id": 24,
+    "Title": "The Lion King",
+    "Director": "Roger Allers, Rob Minkoff",
+    "Year": 1994,
+    "Rating": 8.5,
+    "Genre": "Animation"
+  },
+  {
+    "Id": 25,
+    "Title": "Schindler's List",
+    "Director": "Steven Spielberg",
+    "Year": 1993,
+    "Rating": 9.0,
+    "Genre": "Biography"
+  },
+  {
+    "Id": 26,
+    "Title": "The Prestige",
+    "Director": "Christopher Nolan",
+    "Year": 2006,
+    "Rating": 8.5,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 27,
+    "Title": "The Green Mile",
+    "Director": "Frank Darabont",
+    "Year": 1999,
+    "Rating": 8.6,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 28,
+    "Title": "Shutter Island",
+    "Director": "Martin Scorsese",
+    "Year": 2010,
+    "Rating": 8.2,
+    "Genre": "Thriller"
+  },
+  {
+    "Id": 29,
+    "Title": "The Departed",
+    "Director": "Martin Scorsese",
+    "Year": 2006,
+    "Rating": 8.5,
+    "Genre": "Crime"
+  },
+  {
+    "Id": 30,
+    "Title": "Django Unchained",
+    "Director": "Quentin Tarantino",
+    "Year": 2012,
+    "Rating": 8.4,
+    "Genre": "Western"
+  },
+  {
+    "Id": 31,
+    "Title": "Inglourious Basterds",
+    "Director": "Quentin Tarantino",
+    "Year": 2009,
+    "Rating": 8.3,
+    "Genre": "War"
+  },
+  {
+    "Id": 32,
+    "Title": "The Wolf of Wall Street",
+    "Director": "Martin Scorsese",
+    "Year": 2013,
+    "Rating": 8.2,
+    "Genre": "Biography"
+  },
+  {
+    "Id": 33,
+    "Title": "Blade Runner 2049",
+    "Director": "Denis Villeneuve",
+    "Year": 2017,
+    "Rating": 8.0,
+    "Genre": "Sci-Fi"
+  },
+  {
+    "Id": 34,
+    "Title": "Mad Max: Fury Road",
+    "Director": "George Miller",
+    "Year": 2015,
+    "Rating": 8.1,
+    "Genre": "Action"
+  },
+  {
+    "Id": 35,
+    "Title": "The Truman Show",
+    "Director": "Peter Weir",
+    "Year": 1998,
+    "Rating": 8.2,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 36,
+    "Title": "A Beautiful Mind",
+    "Director": "Ron Howard",
+    "Year": 2001,
+    "Rating": 8.2,
+    "Genre": "Biography"
+  },
+  {
+    "Id": 37,
+    "Title": "The Social Network",
+    "Director": "David Fincher",
+    "Year": 2010,
+    "Rating": 7.9,
+    "Genre": "Biography"
+  },
+  {
+    "Id": 38,
+    "Title": "The Grand Budapest Hotel",
+    "Director": "Wes Anderson",
+    "Year": 2014,
+    "Rating": 8.1,
+    "Genre": "Comedy"
+  },
+  {
+    "Id": 39,
+    "Title": "La La Land",
+    "Director": "Damien Chazelle",
+    "Year": 2016,
+    "Rating": 8.0,
+    "Genre": "Romance"
+  },
+  {
+    "Id": 40,
+    "Title": "The Pianist",
+    "Director": "Roman Polanski",
+    "Year": 2002,
+    "Rating": 8.5,
+    "Genre": "Biography"
+  },
+  {
+    "Id": 41,
+    "Title": "12 Angry Men",
+    "Director": "Sidney Lumet",
+    "Year": 1957,
+    "Rating": 9.0,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 42,
+    "Title": "The Usual Suspects",
+    "Director": "Bryan Singer",
+    "Year": 1995,
+    "Rating": 8.5,
+    "Genre": "Crime"
+  },
+  {
+    "Id": 43,
+    "Title": "The Intouchables",
+    "Director": "Olivier Nakache, Éric Toledano",
+    "Year": 2011,
+    "Rating": 8.5,
+    "Genre": "Biography"
+  },
+  {
+    "Id": 44,
+    "Title": "Slumdog Millionaire",
+    "Director": "Danny Boyle",
+    "Year": 2008,
+    "Rating": 8.0,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 45,
+    "Title": "The Revenant",
+    "Director": "Alejandro G. Iñárritu",
+    "Year": 2015,
+    "Rating": 8.0,
+    "Genre": "Adventure"
+  },
+  {
+    "Id": 46,
+    "Title": "No Country for Old Men",
+    "Director": "Joel Coen, Ethan Coen",
+    "Year": 2007,
+    "Rating": 8.1,
+    "Genre": "Crime"
+  },
+  {
+    "Id": 47,
+    "Title": "Gone Girl",
+    "Director": "David Fincher",
+    "Year": 2014,
+    "Rating": 8.1,
+    "Genre": "Thriller"
+  },
+  {
+    "Id": 48,
+    "Title": "The Big Lebowski",
+    "Director": "Joel Coen, Ethan Coen",
+    "Year": 1998,
+    "Rating": 8.1,
+    "Genre": "Comedy"
+  },
+  {
+    "Id": 49,
+    "Title": "Cast Away",
+    "Director": "Robert Zemeckis",
+    "Year": 2000,
+    "Rating": 7.8,
+    "Genre": "Adventure"
+  },
+  {
+    "Id": 50,
+    "Title": "The Sixth Sense",
+    "Director": "M. Night Shyamalan",
+    "Year": 1999,
+    "Rating": 8.1,
+    "Genre": "Thriller"
+  },
+  {
+    "Id": 51,
+    "Title": "The Forgotten Melody",
+    "Director": "Clara Wentz",
+    "Year": 1998,
+    "Rating": 7.9,
+    "Genre": "Romance"
+  },
+  {
+    "Id": 52,
+    "Title": "Echoes of Tomorrow",
+    "Director": "Mark Finnegan",
+    "Year": 2022,
+    "Rating": 8.2,
+    "Genre": "Sci-Fi"
+  },
+  {
+    "Id": 53,
+    "Title": "Neon Shadows",
+    "Director": "Liam Park",
+    "Year": 2019,
+    "Rating": 7.6,
+    "Genre": "Thriller"
+  },
+  {
+    "Id": 54,
+    "Title": "Sunset Over Kyoto",
+    "Director": "Yui Nakamura",
+    "Year": 2015,
+    "Rating": 8.3,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 55,
+    "Title": "Midnight Express 2: The Return",
+    "Director": "Oliver Reed",
+    "Year": 2020,
+    "Rating": 6.7,
+    "Genre": "Action"
+  },
+  {
+    "Id": 56,
+    "Title": "Ocean's Legacy",
+    "Director": "Sophie Laurent",
+    "Year": 2021,
+    "Rating": 7.5,
+    "Genre": "Adventure"
+  },
+  {
+    "Id": 57,
+    "Title": "Whispering Pines",
+    "Director": "Martha Jensen",
+    "Year": 1992,
+    "Rating": 7.1,
+    "Genre": "Mystery"
+  },
+  {
+    "Id": 58,
+    "Title": "The Mechanical Heart",
+    "Director": "Rene Valois",
+    "Year": 2017,
+    "Rating": 8.4,
+    "Genre": "Fantasy"
+  },
+  {
+    "Id": 59,
+    "Title": "Runaway Algorithm",
+    "Director": "Derek Stone",
+    "Year": 2024,
+    "Rating": 8.1,
+    "Genre": "Sci-Fi"
+  },
+  {
+    "Id": 60,
+    "Title": "Laughter in the Rain",
+    "Director": "Celia Grant",
+    "Year": 1983,
+    "Rating": 7.4,
+    "Genre": "Comedy"
+  },
+  {
+    "Id": 61,
+    "Title": "City of Ashes",
+    "Director": "Jonas Richter",
+    "Year": 2008,
+    "Rating": 7.8,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 62,
+    "Title": "Quantum Symphony",
+    "Director": "Evelyn Wu",
+    "Year": 2023,
+    "Rating": 8.6,
+    "Genre": "Sci-Fi"
+  },
+  {
+    "Id": 63,
+    "Title": "Under a Crimson Sky",
+    "Director": "Antonio Ferrero",
+    "Year": 2002,
+    "Rating": 8.0,
+    "Genre": "War"
+  },
+  {
+    "Id": 64,
+    "Title": "Velvet Horizon",
+    "Director": "Hannah Croft",
+    "Year": 2011,
+    "Rating": 7.2,
+    "Genre": "Romance"
+  },
+  {
+    "Id": 65,
+    "Title": "Silent Orbit",
+    "Director": "Tomáš Novak",
+    "Year": 2025,
+    "Rating": 8.5,
+    "Genre": "Sci-Fi"
+  },
+  {
+    "Id": 66,
+    "Title": "Crimson Harbor",
+    "Director": "Nora King",
+    "Year": 2016,
+    "Rating": 7.3,
+    "Genre": "Thriller"
+  },
+  {
+    "Id": 67,
+    "Title": "A Man Named Nobody",
+    "Director": "Lars Henriksen",
+    "Year": 2007,
+    "Rating": 8.0,
+    "Genre": "Western"
+  },
+  {
+    "Id": 68,
+    "Title": "Golden Empire",
+    "Director": "Richard Scott",
+    "Year": 2013,
+    "Rating": 7.9,
+    "Genre": "Adventure"
+  },
+  {
+    "Id": 69,
+    "Title": "A Taste of Stardust",
+    "Director": "Isabelle Fournier",
+    "Year": 2020,
+    "Rating": 8.1,
+    "Genre": "Fantasy"
+  },
+  {
+    "Id": 70,
+    "Title": "Caffeine Dreams",
+    "Director": "Tom Jacobs",
+    "Year": 2018,
+    "Rating": 7.0,
+    "Genre": "Comedy"
+  },
+  {
+    "Id": 71,
+    "Title": "The Ivory Labyrinth",
+    "Director": "Daniel Cho",
+    "Year": 2014,
+    "Rating": 8.3,
+    "Genre": "Mystery"
+  },
+  {
+    "Id": 72,
+    "Title": "Cold Winter Sun",
+    "Director": "Eva Moretti",
+    "Year": 2005,
+    "Rating": 7.6,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 73,
+    "Title": "How to Lose a Dragon",
+    "Director": "Pete Sanders",
+    "Year": 2021,
+    "Rating": 6.9,
+    "Genre": "Animation"
+  },
+  {
+    "Id": 74,
+    "Title": "The Kingdom Below",
+    "Director": "Aron Petrov",
+    "Year": 2012,
+    "Rating": 7.8,
+    "Genre": "Fantasy"
+  },
+  {
+    "Id": 75,
+    "Title": "Paper Hearts",
+    "Director": "Greta Morrison",
+    "Year": 2019,
+    "Rating": 7.5,
+    "Genre": "Romance"
+  },
+  {
+    "Id": 76,
+    "Title": "Rogue Frequency",
+    "Director": "Ivan Delgado",
+    "Year": 2023,
+    "Rating": 8.2,
+    "Genre": "Thriller"
+  },
+  {
+    "Id": 77,
+    "Title": "The Hollow Kingdom",
+    "Director": "Marina Vogel",
+    "Year": 2009,
+    "Rating": 8.0,
+    "Genre": "Fantasy"
+  },
+  {
+    "Id": 78,
+    "Title": "Titan of the Deep",
+    "Director": "George Redding",
+    "Year": 1996,
+    "Rating": 7.2,
+    "Genre": "Adventure"
+  },
+  {
+    "Id": 79,
+    "Title": "Yesterday's Tomorrow",
+    "Director": "Ben Clarke",
+    "Year": 2017,
+    "Rating": 8.4,
+    "Genre": "Sci-Fi"
+  },
+  {
+    "Id": 80,
+    "Title": "The Great Pretenders",
+    "Director": "Olivia White",
+    "Year": 2001,
+    "Rating": 7.0,
+    "Genre": "Comedy"
+  },
+  {
+    "Id": 81,
+    "Title": "Fragments of Light",
+    "Director": "Natalie Song",
+    "Year": 2010,
+    "Rating": 8.1,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 82,
+    "Title": "A Hero’s Shadow",
+    "Director": "Marcus Lin",
+    "Year": 2004,
+    "Rating": 7.5,
+    "Genre": "Action"
+  },
+  {
+    "Id": 83,
+    "Title": "The Clockmaker’s Daughter",
+    "Director": "Charlotte Bell",
+    "Year": 1995,
+    "Rating": 8.2,
+    "Genre": "Mystery"
+  },
+  {
+    "Id": 84,
+    "Title": "Between Stars and Silence",
+    "Director": "Kara Mendoza",
+    "Year": 2024,
+    "Rating": 8.7,
+    "Genre": "Sci-Fi"
+  },
+  {
+    "Id": 85,
+    "Title": "The Ice Prophet",
+    "Director": "Andrei Volkov",
+    "Year": 2015,
+    "Rating": 7.9,
+    "Genre": "Fantasy"
+  },
+  {
+    "Id": 86,
+    "Title": "Sands of Aether",
+    "Director": "Nadia Kassem",
+    "Year": 2020,
+    "Rating": 8.0,
+    "Genre": "Adventure"
+  },
+  {
+    "Id": 87,
+    "Title": "Love in 8-Bit",
+    "Director": "Ray O'Connell",
+    "Year": 2022,
+    "Rating": 7.3,
+    "Genre": "Comedy"
+  },
+  {
+    "Id": 88,
+    "Title": "Beneath the Iron Sky",
+    "Director": "Victor Hwang",
+    "Year": 2018,
+    "Rating": 8.2,
+    "Genre": "Sci-Fi"
+  },
+  {
+    "Id": 89,
+    "Title": "Moonlight Caravan",
+    "Director": "Elise Martel",
+    "Year": 2011,
+    "Rating": 7.6,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 90,
+    "Title": "The Wanderer's Code",
+    "Director": "Ethan Reeve",
+    "Year": 2013,
+    "Rating": 7.9,
+    "Genre": "Action"
+  },
+  {
+    "Id": 91,
+    "Title": "Autumn in Cairo",
+    "Director": "Layla Mahmoud",
+    "Year": 1994,
+    "Rating": 7.5,
+    "Genre": "Romance"
+  },
+  {
+    "Id": 92,
+    "Title": "Specter Protocol",
+    "Director": "Calvin Ortiz",
+    "Year": 2025,
+    "Rating": 8.6,
+    "Genre": "Thriller"
+  },
+  {
+    "Id": 93,
+    "Title": "Voices of the Deep",
+    "Director": "Anna Kowalska",
+    "Year": 2019,
+    "Rating": 8.1,
+    "Genre": "Documentary"
+  },
+  {
+    "Id": 94,
+    "Title": "Snowfall Sonata",
+    "Director": "Gabriella Rossi",
+    "Year": 2008,
+    "Rating": 7.4,
+    "Genre": "Romance"
+  },
+  {
+    "Id": 95,
+    "Title": "Crimson Orbit",
+    "Director": "Steven Hale",
+    "Year": 2023,
+    "Rating": 8.2,
+    "Genre": "Sci-Fi"
+  },
+  {
+    "Id": 96,
+    "Title": "Shadows of Valyria",
+    "Director": "Tobias Heller",
+    "Year": 2016,
+    "Rating": 8.1,
+    "Genre": "Fantasy"
+  },
+  {
+    "Id": 97,
+    "Title": "Electric Rain",
+    "Director": "Nina Alvarez",
+    "Year": 2018,
+    "Rating": 7.8,
+    "Genre": "Action"
+  },
+  {
+    "Id": 98,
+    "Title": "The Last Botanist",
+    "Director": "Cameron Wells",
+    "Year": 2020,
+    "Rating": 8.4,
+    "Genre": "Drama"
+  },
+  {
+    "Id": 99,
+    "Title": "Violet Horizon",
+    "Director": "Laura Cheng",
+    "Year": 2021,
+    "Rating": 8.0,
+    "Genre": "Romance"
+  },
+  {
+    "Id": 100,
+    "Title": "Quantum Fog",
+    "Director": "Tariq Hassan",
+    "Year": 2024,
+    "Rating": 8.5,
+    "Genre": "Sci-Fi"
+  }
+]

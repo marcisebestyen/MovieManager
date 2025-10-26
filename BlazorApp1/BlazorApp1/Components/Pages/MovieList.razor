@@ -1,0 +1,248 @@
+@page "/"
+@rendermode InteractiveServer
+@inject MovieService MovieSvc
+@inject NavigationManager Navigation
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Movie List</h1>
+    <a href="/add" class="btn btn-primary">Add New Movie</a>
+</div>
+
+<div class="row g-3 mb-4 p-3 rounded">
+    <div class="col-md-8">
+        <label for="searchBox" class="form-label">Search by Title</label>
+        <input id="searchBox"
+               type="text"
+               class="form-control"
+               placeholder="Search for a movie..."
+               @bind="searchTerm"
+               @bind:event="oninput" />
+    </div>
+    <div class="col-md-4">
+        <label for="genreFilter" class="form-label">Filter by Genre</label>
+        <select id="genreFilter" class="form-select" @bind="selectedGenre">
+            <option value="">All Genres</option>
+            @foreach (var genre in genres)
+            {
+                <option value="@genre">@genre</option>
+            }
+        </select>
+    </div>
+</div>
+
+@if (filteredMovies == null)
+{
+    <p><em>Loading movies...</em></p>
+}
+else
+{
+    <table class="table table-striped table-hover movie-list-table">
+        <thead>
+            <tr>
+                <th><button class="btn btn-link th-sort" @onclick='() => SortMovies("Title")'>Title @GetSortIcon("Title")</button></th>
+                <th><button class="btn btn-link th-sort" @onclick='() => SortMovies("Year")'>Year @GetSortIcon("Year")</button></th>
+                <th><button class="btn btn-link th-sort" @onclick='() => SortMovies("Rating")'>Rating @GetSortIcon("Rating")</button></th>
+                <th><button class="btn btn-link th-sort" @onclick='() => SortMovies("Director")'>Director @GetSortIcon("Director")</button></th>
+                <th><button class="btn btn-link th-sort" @onclick='() => SortMovies("Genre")'>Genre @GetSortIcon("Genre")</button></th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in filteredMovies)
+            {
+                <tr>
+                    <td>
+                        <a href="/movie/@movie.Id">@movie.Title</a>
+                        @if (movie.Rating.HasValue && movie.Rating.Value >= 9.0m)
+                        {
+                            <span class="badge bg-warning text-dark ms-2" title="Top Rated">★</span>
+                        }
+                    </td>
+                    <td>@movie.Year</td>
+                    <td>@movie.Rating</td>
+                    <td>@movie.Director</td>
+                    <td>@movie.Genre</td>
+                    <td>
+                        <a href="/edit/@movie.Id" class="btn btn-sm btn-secondary">Edit</a>
+                        <button class="btn btn-sm btn-danger" @onclick="() => movieToDelete = movie">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between align-items-center mt-3">
+        <div>
+            <label for="pageSizeSelect" class="me-2">Movies per page:</label>
+            <select id="pageSizeSelect" class="form-select-sm" @bind="pageSize" style="width: 80px;">
+                @foreach (var size in pageSizeOptions)
+                {
+                    <option value="@size">@size</option>
+                }
+            </select>
+        </div>
+        
+        <span class="me-auto ms-3">
+            @if (totalMovies > 0)
+            {
+                <span>
+                    Showing @Math.Min(((currentPage - 1) * pageSize) + 1, totalMovies)
+                    - @Math.Min(currentPage * pageSize, totalMovies)
+                    of @totalMovies movies
+                </span>
+            }
+            else
+            {
+                <span>No movies found</span>
+            }
+        </span>
+
+        <nav aria-label="Page navigation">
+            <ul class="pagination mb-0">
+                <li class="page-item @(canGoPrevious ? "" : "disabled")">
+                    <button class="page-link" @onclick="() => GoToPage(currentPage - 1)" disabled="@(!canGoPrevious)">Previous</button>
+                </li>
+                <li class="page-item disabled">
+                    <span class="page-link">Page @currentPage of @totalPages</span>
+                </li>
+                <li class="page-item @(canGoNext ? "" : "disabled")">
+                    <button class="page-link" @onclick="() => GoToPage(currentPage + 1)" disabled="@(!canGoNext)">Next</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+}
+
+@if (movieToDelete != null)
+{
+    <div class="modal-backdrop show"></div>
+    <div class="modal show" tabindex="-1" style="display: block;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-white" style="background-color: #2c2e33;">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title">Delete Movie</h5>
+                    <button type="button" class="btn-close btn-close-white" @onclick="() => movieToDelete = null"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete <strong>@movieToDelete.Title</strong>?</p>
+                    <p class="text-muted small">This action cannot be undone.</p>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-secondary" @onclick="() => movieToDelete = null">Cancel</button>
+                    <button type="button" class="btn btn-danger" @onclick="ConfirmDeleteMovie">Confirm Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@code {
+    private List<Movie> allMovies = new();
+    private List<Movie>? filteredMovies;
+    private List<string> genres = new();
+    private Movie? movieToDelete;
+    private string currentSortColumn = "Title";
+    private bool isSortAscending = true;
+    private int currentPage = 1;
+    private int totalMovies = 0;
+    private List<int> pageSizeOptions = new List<int> { 5, 10, 15, 25, 50, 100 };
+
+    private string _searchTerm = "";
+    private string searchTerm
+    {
+        get => _searchTerm;
+        set { _searchTerm = value; currentPage = 1; FilterMovies(); }
+    }
+
+    private string _selectedGenre = "";
+    private string selectedGenre
+    {
+        get => _selectedGenre;
+        set { _selectedGenre = value; currentPage = 1; FilterMovies(); }
+    }
+
+    private int _pageSize = 10;
+    private int pageSize
+    {
+        get => _pageSize;
+        set { _pageSize = value; currentPage = 1; FilterMovies(); }
+    }
+
+    private int totalPages => (int)Math.Ceiling(totalMovies / (double)pageSize);
+    private bool canGoPrevious => currentPage > 1;
+    private bool canGoNext => currentPage < totalPages;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadMoviesAsync();
+    }
+
+    private async Task LoadMoviesAsync()
+    {
+        allMovies = await MovieSvc.GetMoviesAsync(); 
+        genres = allMovies.Select(m => m.Genre).Distinct().OrderBy(g => g).ToList();
+        FilterMovies();
+    }
+
+    private void FilterMovies()
+    {
+        var query = allMovies.AsEnumerable();
+
+        if (!string.IsNullOrWhiteSpace(searchTerm))
+        {
+            query = query.Where(m => m.Title.Contains(searchTerm, StringComparison.OrdinalIgnoreCase));
+        }
+
+        if (!string.IsNullOrWhiteSpace(selectedGenre))
+        {
+            query = query.Where(m => m.Genre.Equals(selectedGenre, StringComparison.OrdinalIgnoreCase));
+        }
+        
+        totalMovies = query.Count();
+
+        switch (currentSortColumn)
+        {
+            case "Title": query = isSortAscending ? query.OrderBy(m => m.Title) : query.OrderByDescending(m => m.Title); break;
+            case "Year": query = isSortAscending ? query.OrderBy(m => m.Year) : query.OrderByDescending(m => m.Year); break;
+            case "Rating": query = isSortAscending ? query.OrderBy(m => m.Rating) : query.OrderByDescending(m => m.Rating); break;
+            case "Director": query = isSortAscending ? query.OrderBy(m => m.Director) : query.OrderByDescending(m => m.Director); break;
+            case "Genre": query = isSortAscending ? query.OrderBy(m => m.Genre) : query.OrderByDescending(m => m.Genre); break;
+        }
+        
+        filteredMovies = query
+            .Skip((currentPage - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
+    }
+
+    private void GoToPage(int page)
+    {
+        if (page < 1 || page > totalPages) return;
+        currentPage = page;
+        FilterMovies();
+    }
+
+    private void SortMovies(string columnName)
+    {
+        if (columnName == currentSortColumn) { isSortAscending = !isSortAscending; }
+        else { currentSortColumn = columnName; isSortAscending = true; }
+        FilterMovies();
+    }
+
+    private string GetSortIcon(string columnName)
+    {
+        if (columnName != currentSortColumn) { return string.Empty; }
+        return isSortAscending ? "▲" : "▼";
+    }
+
+    private async Task ConfirmDeleteMovie()
+    {
+        if (movieToDelete == null) return;
+        await MovieSvc.DeleteMovieAsync(movieToDelete.Id);
+        movieToDelete = null; 
+        await LoadMoviesAsync();
+    }
+}

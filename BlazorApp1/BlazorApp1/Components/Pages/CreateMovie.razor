@@ -1,0 +1,62 @@
+@page "/add"
+@rendermode InteractiveServer
+@inject MovieService MovieSvc
+@inject NavigationManager Navigation
+
+<PageTitle>Add New Movie</PageTitle>
+
+<div class="mb-4">
+    <a href="/" class="btn btn-sm btn-outline-secondary">← Back to List</a>
+</div>
+
+<h3>Add New Movie</h3>
+
+<EditForm Model="newMovie" OnValidSubmit="HandleValidSubmit" FormName="CreateMovie">
+    <DataAnnotationsValidator />
+    <ValidationSummary class="text-danger" />
+
+    <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
+        <InputText id="title" class="form-control" @bind-Value="newMovie.Title" />
+        <ValidationMessage For="@(() => newMovie.Title)" class="text-danger validation-message" />
+    </div>
+
+    <div class="mb-3">
+        <label for="director" class="form-label">Director:</label>
+        <InputText id="director" class="form-control" @bind-Value="newMovie.Director" />
+        <ValidationMessage For="@(() => newMovie.Director)" class="text-danger validation-message" />
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="year" class="form-label">Year:</label>
+            <InputNumber id="year" class="form-control" @bind-Value="newMovie.Year" />
+            <ValidationMessage For="@(() => newMovie.Year)" class="text-danger validation-message" />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="rating" class="form-label">Rating (0.1 - 10.0):</label>
+            <InputNumber id="rating" class="form-control" @bind-Value="newMovie.Rating" step="0.1" />
+            <ValidationMessage For="@(() => newMovie.Rating)" class="text-danger validation-message" />
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="genre" class="form-label">Genre:</label>
+        <InputText id="genre" class="form-control" @bind-Value="newMovie.Genre" />
+        <ValidationMessage For="@(() => newMovie.Genre)" class="text-danger validation-message" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Movie</button>
+    <a href="/" class="btn btn-secondary">Cancel</a>
+</EditForm>
+
+@code {
+    [SupplyParameterFromForm]
+    private Movie newMovie { get; set; } = new();
+
+    private async Task HandleValidSubmit()
+    {
+        await MovieSvc.AddMovieAsync(newMovie);
+        Navigation.NavigateTo("/");
+    }
+}
