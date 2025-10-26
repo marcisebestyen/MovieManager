@@ -3,141 +3,687 @@
 @inject MovieService MovieSvc
 @inject NavigationManager Navigation
 
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h1>Movie List</h1>
-    <a href="/add" class="btn btn-primary">Add New Movie</a>
-</div>
+<PageTitle>Movie Collection</PageTitle>
 
-<div class="row g-3 mb-4 p-3 rounded">
-    <div class="col-md-8">
-        <label for="searchBox" class="form-label">Search by Title</label>
-        <input id="searchBox"
-               type="text"
-               class="form-control"
-               placeholder="Search for a movie..."
-               @bind="searchTerm"
-               @bind:event="oninput" />
-    </div>
-    <div class="col-md-4">
-        <label for="genreFilter" class="form-label">Filter by Genre</label>
-        <select id="genreFilter" class="form-select" @bind="selectedGenre">
-            <option value="">All Genres</option>
-            @foreach (var genre in genres)
-            {
-                <option value="@genre">@genre</option>
-            }
-        </select>
-    </div>
-</div>
+<style>
+    .app-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
 
-@if (filteredMovies == null)
-{
-    <p><em>Loading movies...</em></p>
-}
-else
-{
-    <table class="table table-striped table-hover movie-list-table">
-        <thead>
-            <tr>
-                <th><button class="btn btn-link th-sort" @onclick='() => SortMovies("Title")'>Title @GetSortIcon("Title")</button></th>
-                <th><button class="btn btn-link th-sort" @onclick='() => SortMovies("Year")'>Year @GetSortIcon("Year")</button></th>
-                <th><button class="btn btn-link th-sort" @onclick='() => SortMovies("Rating")'>Rating @GetSortIcon("Rating")</button></th>
-                <th><button class="btn btn-link th-sort" @onclick='() => SortMovies("Director")'>Director @GetSortIcon("Director")</button></th>
-                <th><button class="btn btn-link th-sort" @onclick='() => SortMovies("Genre")'>Genre @GetSortIcon("Genre")</button></th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    .hero-banner {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+        padding: 3.5rem 2.5rem;
+        border-radius: 24px;
+        margin-bottom: 2.5rem;
+        box-shadow: 0 20px 60px rgba(99, 102, 241, 0.4);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-banner::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        opacity: 0.4;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-title {
+        color: white;
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 0.75rem;
+        text-shadow: 2px 4px 8px rgba(0,0,0,0.3);
+        letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+        color: rgba(255,255,255,0.95);
+        font-size: 1.25rem;
+        font-weight: 400;
+    }
+
+    .btn-add-hero {
+        background: white;
+        color: #6366f1;
+        padding: 1rem 2.5rem;
+        border-radius: 14px;
+        font-weight: 700;
+        border: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        font-size: 1.1rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .btn-add-hero:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        color: #6366f1;
+    }
+
+    .controls-section {
+        background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
+        border-radius: 20px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .search-input-wrapper {
+        position: relative;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #94a3b8;
+        font-size: 1.2rem;
+    }
+
+    .search-input {
+        background: #0f172a;
+        border: 2px solid #334155;
+        color: #e2e8f0;
+        border-radius: 14px;
+        padding: 1rem 1rem 1rem 3rem;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+    }
+
+    .search-input:focus {
+        background: #1e293b;
+        border-color: #6366f1;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        color: white;
+    }
+
+    .genre-select {
+        background: #0f172a;
+        border: 2px solid #334155;
+        color: #e2e8f0;
+        border-radius: 14px;
+        padding: 1rem;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+    }
+
+    .genre-select:focus {
+        background: #1e293b;
+        border-color: #6366f1;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        color: white;
+    }
+
+    .sort-bar {
+        background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
+        padding: 1.25rem 1.75rem;
+        border-radius: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        border: 1px solid rgba(255,255,255,0.1);
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .sort-buttons {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .sort-btn {
+        background: #0f172a;
+        border: 2px solid #334155;
+        color: #cbd5e0;
+        padding: 0.6rem 1.25rem;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.95rem;
+    }
+
+    .sort-btn:hover {
+        background: #1e293b;
+        border-color: #6366f1;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .sort-btn.active {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        border-color: #8b5cf6;
+        color: white;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    }
+
+    .movie-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .movie-card {
+        background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
+        border-radius: 18px;
+        padding: 1.75rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .movie-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+    }
+
+    .movie-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .movie-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(99, 102, 241, 0.3);
+        border-color: rgba(99, 102, 241, 0.5);
+    }
+
+    .movie-title-section {
+        margin-bottom: 1rem;
+    }
+
+    .movie-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    .movie-title a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .movie-title a:hover {
+        color: #a78bfa;
+    }
+
+    .badge-masterpiece {
+        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        color: #1e293b;
+        padding: 0.4rem 0.9rem;
+        border-radius: 8px;
+        font-weight: 800;
+        font-size: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+        white-space: nowrap;
+    }
+
+    .movie-meta {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .meta-box {
+        background: #0f172a;
+        padding: 0.75rem;
+        border-radius: 10px;
+        border: 1px solid #334155;
+    }
+
+    .meta-label {
+        color: #94a3b8;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.4rem;
+    }
+
+    .meta-value {
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .rating-value {
+        background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+        font-size: 1.3rem;
+    }
+
+    .rating-high {
+        background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .genre-tag {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: white;
+        padding: 0.4rem 1rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: inline-block;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .btn-action {
+        flex: 1;
+        padding: 0.75rem;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .btn-edit {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        color: white;
+    }
+
+    .btn-edit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-delete {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        color: white;
+    }
+
+    .btn-delete:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+    }
+
+    .pagination-container {
+        background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
+        padding: 1.5rem 2rem;
+        border-radius: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .page-size-control {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .page-size-control label {
+        color: #cbd5e0;
+        font-weight: 600;
+    }
+
+    .page-size-select {
+        background: #0f172a;
+        border: 2px solid #334155;
+        color: white;
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+
+    .pagination-info {
+        color: #e2e8f0;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    .pagination-controls {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+    }
+
+    .page-btn {
+        background: #0f172a;
+        border: 2px solid #334155;
+        color: white;
+        padding: 0.65rem 1.5rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        font-weight: 600;
+    }
+
+    .page-btn:hover:not(:disabled) {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        border-color: #8b5cf6;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .page-btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
+
+    .page-indicator {
+        background: #0f172a;
+        padding: 0.65rem 1.25rem;
+        border-radius: 10px;
+        color: #e2e8f0;
+        font-weight: 600;
+        border: 2px solid #334155;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 5rem 2rem;
+        background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .empty-icon {
+        font-size: 5rem;
+        margin-bottom: 1.5rem;
+        opacity: 0.4;
+    }
+
+    .empty-title {
+        color: white;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+    }
+
+    .empty-text {
+        color: #94a3b8;
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    .loading-state {
+        text-align: center;
+        padding: 5rem 2rem;
+    }
+
+    .spinner {
+        border: 4px solid #334155;
+        border-top: 4px solid #6366f1;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1.5rem;
+    }
+
+    .modal-overlay {
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+    }
+
+    .modal-content-custom {
+        background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .stats-badge {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 1rem;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+</style>
+
+<div class="app-container">
+    <div class="hero-banner">
+        <div class="hero-content">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <div>
+                    <h1 class="hero-title">🎬 My Movie Collection</h1>
+                    <p class="hero-subtitle">Discover, organize, and celebrate cinema</p>
+                </div>
+                <a href="/add" class="btn-add-hero">
+                    <span style="font-size: 1.3rem;">+</span> Add Movie
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls-section">
+        <div class="row g-3">
+            <div class="col-lg-8">
+                <label for="searchBox" class="form-label text-light fw-semibold mb-2">Search Movies</label>
+                <div class="search-input-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input id="searchBox"
+                           type="text"
+                           class="form-control search-input"
+                           placeholder="Find your favorite movie..."
+                           @bind="searchTerm"
+                           @bind:event="oninput" />
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label for="genreFilter" class="form-label text-light fw-semibold mb-2">Filter by Genre</label>
+                <select id="genreFilter" class="form-select genre-select" @bind="selectedGenre">
+                    <option value="">All Genres</option>
+                    @foreach (var genre in genres)
+                    {
+                        <option value="@genre">@genre</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    @if (filteredMovies == null)
+    {
+        <div class="loading-state">
+            <div class="spinner"></div>
+            <p class="text-light fs-5">Loading your collection...</p>
+        </div>
+    }
+    else if (filteredMovies.Count == 0)
+    {
+        <div class="empty-state">
+            <div class="empty-icon">🎭</div>
+            <h3 class="empty-title">No Movies Found</h3>
+            <p class="empty-text">Try adjusting your filters or add your first movie!</p>
+            <a href="/add" class="btn-add-hero">Add Your First Movie</a>
+        </div>
+    }
+    else
+    {
+        <div class="sort-bar">
+            <div class="sort-buttons">
+                <button class="sort-btn @(currentSortColumn == "Title" ? "active" : "")" @onclick='() => SortMovies("Title")'>
+                    Title @GetSortIcon("Title")
+                </button>
+                <button class="sort-btn @(currentSortColumn == "Year" ? "active" : "")" @onclick='() => SortMovies("Year")'>
+                    Year @GetSortIcon("Year")
+                </button>
+                <button class="sort-btn @(currentSortColumn == "Rating" ? "active" : "")" @onclick='() => SortMovies("Rating")'>
+                    Rating @GetSortIcon("Rating")
+                </button>
+                <button class="sort-btn @(currentSortColumn == "Director" ? "active" : "")" @onclick='() => SortMovies("Director")'>
+                    Director @GetSortIcon("Director")
+                </button>
+            </div>
+            <div class="stats-badge">
+                @totalMovies Movies
+            </div>
+        </div>
+
+        <div class="movie-grid">
             @foreach (var movie in filteredMovies)
             {
-                <tr>
-                    <td>
-                        <a href="/movie/@movie.Id">@movie.Title</a>
-                        @if (movie.Rating.HasValue && movie.Rating.Value >= 9.0m)
-                        {
-                            <span class="badge bg-warning text-dark ms-2" title="Top Rated">★</span>
-                        }
-                    </td>
-                    <td>@movie.Year</td>
-                    <td>@movie.Rating</td>
-                    <td>@movie.Director</td>
-                    <td>@movie.Genre</td>
-                    <td>
-                        <a href="/edit/@movie.Id" class="btn btn-sm btn-secondary">Edit</a>
-                        <button class="btn btn-sm btn-danger" @onclick="() => movieToDelete = movie">
-                            Delete
+                <div class="movie-card">
+                    <div class="movie-title-section">
+                        <div class="movie-title">
+                            <a href="/movie/@movie.Id">@movie.Title</a>
+                            @if (movie.Rating >= 9.0m)
+                            {
+                                <span class="badge-masterpiece">
+                                    ⭐ Top Rated
+                                </span>
+                            }
+                        </div>
+                    </div>
+                    
+                    <div class="movie-meta">
+                        <div class="meta-box">
+                            <div class="meta-label">Year</div>
+                            <div class="meta-value">@movie.Year</div>
+                        </div>
+                        <div class="meta-box">
+                            <div class="meta-label">Rating</div>
+                            <div class="meta-value">
+                                <span class="rating-value @(movie.Rating >= 8.0m ? "rating-high" : "")">
+                                    ⭐ @movie.Rating.ToString()
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="meta-label mb-2">Director</div>
+                        <div class="text-light">🎬 @movie.Director</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <span class="genre-tag">@movie.Genre</span>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a href="/edit/@movie.Id" class="btn-action btn-edit">
+                            ✏️ Edit
+                        </a>
+                        <button class="btn-action btn-delete" @onclick="() => movieToDelete = movie">
+                            🗑️ Delete
                         </button>
-                    </td>
-                </tr>
+                    </div>
+                </div>
             }
-        </tbody>
-    </table>
-
-    <div class="d-flex justify-content-between align-items-center mt-3">
-        <div>
-            <label for="pageSizeSelect" class="me-2">Movies per page:</label>
-            <select id="pageSizeSelect" class="form-select-sm" @bind="pageSize" style="width: 80px;">
-                @foreach (var size in pageSizeOptions)
-                {
-                    <option value="@size">@size</option>
-                }
-            </select>
         </div>
-        
-        <span class="me-auto ms-3">
-            @if (totalMovies > 0)
-            {
-                <span>
-                    Showing @Math.Min(((currentPage - 1) * pageSize) + 1, totalMovies)
-                    - @Math.Min(currentPage * pageSize, totalMovies)
-                    of @totalMovies movies
-                </span>
-            }
-            else
-            {
-                <span>No movies found</span>
-            }
-        </span>
 
-        <nav aria-label="Page navigation">
-            <ul class="pagination mb-0">
-                <li class="page-item @(canGoPrevious ? "" : "disabled")">
-                    <button class="page-link" @onclick="() => GoToPage(currentPage - 1)" disabled="@(!canGoPrevious)">Previous</button>
-                </li>
-                <li class="page-item disabled">
-                    <span class="page-link">Page @currentPage of @totalPages</span>
-                </li>
-                <li class="page-item @(canGoNext ? "" : "disabled")">
-                    <button class="page-link" @onclick="() => GoToPage(currentPage + 1)" disabled="@(!canGoNext)">Next</button>
-                </li>
-            </ul>
-        </nav>
-    </div>
-}
+        <div class="pagination-container">
+            <div class="page-size-control">
+                <label>Per page:</label>
+                <select class="page-size-select" @bind="pageSize">
+                    @foreach (var size in pageSizeOptions)
+                    {
+                        <option value="@size">@size</option>
+                    }
+                </select>
+            </div>
+            
+            <span class="pagination-info">
+                @if (totalMovies > 0)
+                {
+                    <span>
+                        @Math.Min(((currentPage - 1) * pageSize) + 1, totalMovies)
+                        - @Math.Min(currentPage * pageSize, totalMovies)
+                        of @totalMovies
+                    </span>
+                }
+            </span>
+
+            <div class="pagination-controls">
+                <button class="page-btn" @onclick="() => GoToPage(currentPage - 1)" disabled="@(!canGoPrevious)">
+                    ← Prev
+                </button>
+                <span class="page-indicator">@currentPage / @totalPages</span>
+                <button class="page-btn" @onclick="() => GoToPage(currentPage + 1)" disabled="@(!canGoNext)">
+                    Next →
+                </button>
+            </div>
+        </div>
+    }
+</div>
 
 @if (movieToDelete != null)
 {
-    <div class="modal-backdrop show"></div>
+    <div class="modal-backdrop show modal-overlay"></div>
     <div class="modal show" tabindex="-1" style="display: block;">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content text-white" style="background-color: #2c2e33;">
-                <div class="modal-header border-secondary">
-                    <h5 class="modal-title">Delete Movie</h5>
+            <div class="modal-content modal-content-custom text-white">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold">🗑️ Delete Movie</h5>
                     <button type="button" class="btn-close btn-close-white" @onclick="() => movieToDelete = null"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete <strong>@movieToDelete.Title</strong>?</p>
-                    <p class="text-muted small">This action cannot be undone.</p>
+                    <p class="mb-2">Are you sure you want to delete <strong style="color: #fbbf24;">@movieToDelete.Title</strong>?</p>
+                    <p class="text-muted small mb-0">⚠️ This action cannot be undone.</p>
                 </div>
-                <div class="modal-footer border-secondary">
+                <div class="modal-footer border-0">
                     <button type="button" class="btn btn-secondary" @onclick="() => movieToDelete = null">Cancel</button>
-                    <button type="button" class="btn btn-danger" @onclick="ConfirmDeleteMovie">Confirm Delete</button>
+                    <button type="button" class="btn btn-danger" @onclick="ConfirmDeleteMovie">Delete Movie</button>
                 </div>
             </div>
         </div>
     </div>
 }
-
 
 @code {
     private List<Movie> allMovies = new();
@@ -148,7 +694,7 @@ else
     private bool isSortAscending = true;
     private int currentPage = 1;
     private int totalMovies = 0;
-    private List<int> pageSizeOptions = new List<int> { 5, 10, 15, 25, 50, 100 };
+    private List<int> pageSizeOptions = new List<int> { 6, 12, 24, 48 };
 
     private string _searchTerm = "";
     private string searchTerm
@@ -164,7 +710,7 @@ else
         set { _selectedGenre = value; currentPage = 1; FilterMovies(); }
     }
 
-    private int _pageSize = 10;
+    private int _pageSize = 12;
     private int pageSize
     {
         get => _pageSize;
@@ -234,8 +780,8 @@ else
 
     private string GetSortIcon(string columnName)
     {
-        if (columnName != currentSortColumn) { return string.Empty; }
-        return isSortAscending ? "▲" : "▼";
+        if (columnName != currentSortColumn) { return ""; }
+        return isSortAscending ? "↑" : "↓";
     }
 
     private async Task ConfirmDeleteMovie()
