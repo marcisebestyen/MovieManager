@@ -22,7 +22,6 @@ public class MovieService
 
         var json = await File.ReadAllTextAsync(_jsonFilePath);
         
-        // Handle empty or whitespace-only files
         if (string.IsNullOrWhiteSpace(json))
         {
             return new List<Movie>();
@@ -37,7 +36,6 @@ public class MovieService
         }
         catch (JsonException)
         {
-            // If JSON is invalid, return empty list and overwrite with valid JSON
             var emptyList = new List<Movie>();
             await WriteMoviesToFileAsync(emptyList);
             return emptyList;
