@@ -798,5 +798,805 @@
     "year": 2024,
     "rating": 8.5,
     "genre": "Sci-Fi"
+  },
+  {
+    "id": 101,
+    "title": "Midnight Serenade",
+    "director": "Elena Fischer",
+    "year": 2013,
+    "rating": 7.8,
+    "genre": "Romance"
+  },
+  {
+    "id": 102,
+    "title": "Echoes in the Dust",
+    "director": "Ralph Kinney",
+    "year": 2002,
+    "rating": 8.0,
+    "genre": "Drama"
+  },
+  {
+    "id": 103,
+    "title": "Neural Divide",
+    "director": "Oscar Tan",
+    "year": 2023,
+    "rating": 8.4,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 104,
+    "title": "Blood and Rust",
+    "director": "Mikhail Orlov",
+    "year": 2015,
+    "rating": 7.6,
+    "genre": "Action"
+  },
+  {
+    "id": 105,
+    "title": "The Paper Soldier",
+    "director": "Samantha Hodge",
+    "year": 1999,
+    "rating": 7.9,
+    "genre": "War"
+  },
+  {
+    "id": 106,
+    "title": "Velvet Alley",
+    "director": "Clarence Monroe",
+    "year": 1961,
+    "rating": 7.2,
+    "genre": "Crime"
+  },
+  {
+    "id": 107,
+    "title": "After the Flood",
+    "director": "Jonah Caldwell",
+    "year": 2020,
+    "rating": 8.1,
+    "genre": "Thriller"
+  },
+  {
+    "id": 108,
+    "title": "Starlight Republic",
+    "director": "Yasmin Hori",
+    "year": 2017,
+    "rating": 8.5,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 109,
+    "title": "Crows of Vienna",
+    "director": "Maximilian Berg",
+    "year": 2012,
+    "rating": 7.7,
+    "genre": "Mystery"
+  },
+  {
+    "id": 110,
+    "title": "Whiskey Moon",
+    "director": "Paula McKay",
+    "year": 1984,
+    "rating": 7.0,
+    "genre": "Comedy"
+  },
+  {
+    "id": 111,
+    "title": "The Luminous Path",
+    "director": "Giulia Santoro",
+    "year": 2024,
+    "rating": 8.3,
+    "genre": "Drama"
+  },
+  {
+    "id": 112,
+    "title": "Rise of the Warlord",
+    "director": "Takeshi Morita",
+    "year": 2008,
+    "rating": 7.8,
+    "genre": "Action"
+  },
+  {
+    "id": 113,
+    "title": "Beneath the Silver Bridge",
+    "director": "Olga Novak",
+    "year": 2010,
+    "rating": 8.1,
+    "genre": "Thriller"
+  },
+  {
+    "id": 114,
+    "title": "The Echo Chamber",
+    "director": "Samuel Bennett",
+    "year": 2019,
+    "rating": 7.5,
+    "genre": "Mystery"
+  },
+  {
+    "id": 115,
+    "title": "Distant Shores",
+    "director": "Helena Kovács",
+    "year": 2003,
+    "rating": 8.0,
+    "genre": "Romance"
+  },
+  {
+    "id": 116,
+    "title": "The Carbon Prophet",
+    "director": "Patrick Zhou",
+    "year": 2025,
+    "rating": 8.7,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 117,
+    "title": "The Painter’s Widow",
+    "director": "Ingrid Dahl",
+    "year": 1974,
+    "rating": 8.1,
+    "genre": "Drama"
+  },
+  {
+    "id": 118,
+    "title": "Shadow Circuit",
+    "director": "Artem Reyes",
+    "year": 2016,
+    "rating": 8.0,
+    "genre": "Thriller"
+  },
+  {
+    "id": 119,
+    "title": "Hollow Lake",
+    "director": "Mara O’Donnell",
+    "year": 1992,
+    "rating": 7.4,
+    "genre": "Mystery"
+  },
+  {
+    "id": 120,
+    "title": "Songs of the Storm",
+    "director": "Jonah Petrov",
+    "year": 2011,
+    "rating": 8.3,
+    "genre": "Drama"
+  },
+  {
+    "id": 121,
+    "title": "The Chromium Age",
+    "director": "Raymond Holt",
+    "year": 1965,
+    "rating": 7.1,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 122,
+    "title": "Paper Planets",
+    "director": "Lucia Ferreiro",
+    "year": 2014,
+    "rating": 8.0,
+    "genre": "Animation"
+  },
+  {
+    "id": 123,
+    "title": "Kingdom of Clay",
+    "director": "Omar Rashid",
+    "year": 2015,
+    "rating": 7.6,
+    "genre": "Drama"
+  },
+  {
+    "id": 124,
+    "title": "Silverthorn",
+    "director": "Gavin Crowe",
+    "year": 2006,
+    "rating": 7.9,
+    "genre": "Fantasy"
+  },
+  {
+    "id": 125,
+    "title": "A Symphony of Errors",
+    "director": "Claudia Moreno",
+    "year": 2018,
+    "rating": 7.2,
+    "genre": "Comedy"
+  },
+  {
+    "id": 126,
+    "title": "Zero Latitude",
+    "director": "Rajesh Khanna",
+    "year": 2020,
+    "rating": 8.1,
+    "genre": "Thriller"
+  },
+  {
+    "id": 127,
+    "title": "Forgotten Engines",
+    "director": "Caleb Wright",
+    "year": 2002,
+    "rating": 7.8,
+    "genre": "Adventure"
+  },
+  {
+    "id": 128,
+    "title": "Dark Matter Waltz",
+    "director": "Sofia Hwang",
+    "year": 2023,
+    "rating": 8.6,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 129,
+    "title": "The Paper Kingdom",
+    "director": "Marcel Dubois",
+    "year": 2012,
+    "rating": 8.0,
+    "genre": "Fantasy"
+  },
+  {
+    "id": 130,
+    "title": "Echo Harbor",
+    "director": "Mira Lang",
+    "year": 1997,
+    "rating": 7.5,
+    "genre": "Drama"
+  },
+  {
+    "id": 131,
+    "title": "The Last Witness",
+    "director": "Connor Blake",
+    "year": 2011,
+    "rating": 8.1,
+    "genre": "Thriller"
+  },
+  {
+    "id": 132,
+    "title": "Marble Skies",
+    "director": "Eleanor Finch",
+    "year": 2022,
+    "rating": 8.2,
+    "genre": "Romance"
+  },
+  {
+    "id": 133,
+    "title": "The Glass Frontier",
+    "director": "Daniela Cruz",
+    "year": 2024,
+    "rating": 8.3,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 134,
+    "title": "Ashes and Petals",
+    "director": "Peter Nolan",
+    "year": 2005,
+    "rating": 7.9,
+    "genre": "Drama"
+  },
+  {
+    "id": 135,
+    "title": "The Coded Heart",
+    "director": "Hana Sugimoto",
+    "year": 2017,
+    "rating": 8.1,
+    "genre": "Romance"
+  },
+  {
+    "id": 136,
+    "title": "Under Pale Suns",
+    "director": "Silvia Klein",
+    "year": 2009,
+    "rating": 7.6,
+    "genre": "Adventure"
+  },
+  {
+    "id": 137,
+    "title": "The Midnight Engine",
+    "director": "Tomás Vega",
+    "year": 2025,
+    "rating": 8.8,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 138,
+    "title": "Golden Threads",
+    "director": "Daria Ivanova",
+    "year": 1989,
+    "rating": 7.2,
+    "genre": "Drama"
+  },
+  {
+    "id": 139,
+    "title": "The Nameless River",
+    "director": "Klaus Brenner",
+    "year": 1973,
+    "rating": 7.9,
+    "genre": "Mystery"
+  },
+  {
+    "id": 140,
+    "title": "After the Snow",
+    "director": "Maria González",
+    "year": 2016,
+    "rating": 8.1,
+    "genre": "Drama"
+  },
+  {
+    "id": 141,
+    "title": "Steel Rain Rising",
+    "director": "Carlos Jiménez",
+    "year": 2018,
+    "rating": 8.0,
+    "genre": "Action"
+  },
+  {
+    "id": 142,
+    "title": "The Crimson Tower",
+    "director": "Beatrice Lenoir",
+    "year": 2019,
+    "rating": 7.7,
+    "genre": "Fantasy"
+  },
+  {
+    "id": 143,
+    "title": "Nightfall Over Eden",
+    "director": "Oliver Varga",
+    "year": 2021,
+    "rating": 8.4,
+    "genre": "Thriller"
+  },
+  {
+    "id": 144,
+    "title": "Luna’s Voyage",
+    "director": "Renee Porter",
+    "year": 2014,
+    "rating": 8.1,
+    "genre": "Adventure"
+  },
+  {
+    "id": 145,
+    "title": "The Silent Fortress",
+    "director": "Tadashi Yamura",
+    "year": 2007,
+    "rating": 7.8,
+    "genre": "War"
+  },
+  {
+    "id": 146,
+    "title": "Rosewood Alley",
+    "director": "Emilia Becker",
+    "year": 1998,
+    "rating": 7.5,
+    "genre": "Crime"
+  },
+  {
+    "id": 147,
+    "title": "Beneath the Waves",
+    "director": "Samuel Osei",
+    "year": 2022,
+    "rating": 8.3,
+    "genre": "Documentary"
+  },
+  {
+    "id": 148,
+    "title": "Eternal Spiral",
+    "director": "Lucien Barre",
+    "year": 2023,
+    "rating": 8.5,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 149,
+    "title": "Red Horizon Dawn",
+    "director": "William Clarke",
+    "year": 2015,
+    "rating": 7.9,
+    "genre": "Action"
+  },
+  {
+    "id": 150,
+    "title": "The Broken Compass",
+    "director": "Isabella Marino",
+    "year": 2018,
+    "rating": 7.8,
+    "genre": "Adventure"
+  },
+  {
+    "id": 151,
+    "title": "Mirror’s Edge",
+    "director": "Rina Tagawa",
+    "year": 2020,
+    "rating": 8.0,
+    "genre": "Thriller"
+  },
+  {
+    "id": 152,
+    "title": "Cloudless Skies",
+    "director": "Nikolai Anders",
+    "year": 1991,
+    "rating": 7.4,
+    "genre": "Drama"
+  },
+  {
+    "id": 153,
+    "title": "The Jade Compass",
+    "director": "Wen Li Zhang",
+    "year": 2003,
+    "rating": 7.8,
+    "genre": "Adventure"
+  },
+  {
+    "id": 154,
+    "title": "Dust and Silence",
+    "director": "Marko Simic",
+    "year": 1999,
+    "rating": 7.3,
+    "genre": "War"
+  },
+  {
+    "id": 155,
+    "title": "Vortex Prime",
+    "director": "Alice Monroe",
+    "year": 2024,
+    "rating": 8.6,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 156,
+    "title": "Frozen Empire",
+    "director": "Haruto Nishida",
+    "year": 2017,
+    "rating": 8.0,
+    "genre": "Fantasy"
+  },
+  {
+    "id": 157,
+    "title": "The Shadow Parade",
+    "director": "Rita Gomez",
+    "year": 2005,
+    "rating": 7.7,
+    "genre": "Crime"
+  },
+  {
+    "id": 158,
+    "title": "Lights Over Babylon",
+    "director": "James Patel",
+    "year": 2021,
+    "rating": 8.2,
+    "genre": "Drama"
+  },
+  {
+    "id": 159,
+    "title": "Morning Star",
+    "director": "George Eddison",
+    "year": 1947,
+    "rating": 8.0,
+    "genre": "Romance"
+  },
+  {
+    "id": 160,
+    "title": "The Iron Garden",
+    "director": "Petra Müller",
+    "year": 2012,
+    "rating": 8.1,
+    "genre": "Fantasy"
+  },
+  {
+    "id": 161,
+    "title": "Digital Eden",
+    "director": "Oscar Leung",
+    "year": 2023,
+    "rating": 8.7,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 162,
+    "title": "The Porcelain Mask",
+    "director": "João Pereira",
+    "year": 2019,
+    "rating": 8.2,
+    "genre": "Thriller"
+  },
+  {
+    "id": 163,
+    "title": "Letters from Orion",
+    "director": "Yara Mendel",
+    "year": 2025,
+    "rating": 8.8,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 164,
+    "title": "Glass Petals",
+    "director": "Nina Lavoie",
+    "year": 2014,
+    "rating": 7.9,
+    "genre": "Romance"
+  },
+  {
+    "id": 165,
+    "title": "Shadowbrook",
+    "director": "Alan Rhodes",
+    "year": 2001,
+    "rating": 7.6,
+    "genre": "Mystery"
+  },
+  {
+    "id": 166,
+    "title": "Descent of Kings",
+    "director": "Viktor Madsen",
+    "year": 2010,
+    "rating": 8.0,
+    "genre": "Fantasy"
+  },
+  {
+    "id": 167,
+    "title": "The Final Transmission",
+    "director": "Liam Cho",
+    "year": 2024,
+    "rating": 8.5,
+    "genre": "Thriller"
+  },
+  {
+    "id": 168,
+    "title": "Broken Mirrors",
+    "director": "Nadia Hassan",
+    "year": 2016,
+    "rating": 7.8,
+    "genre": "Drama"
+  },
+  {
+    "id": 169,
+    "title": "The Copper City",
+    "director": "Antonio Reyes",
+    "year": 2007,
+    "rating": 7.7,
+    "genre": "Adventure"
+  },
+  {
+    "id": 170,
+    "title": "Dreams of Static",
+    "director": "Carter Lee",
+    "year": 2013,
+    "rating": 8.1,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 171,
+    "title": "The Hollow Sea",
+    "director": "Marta Jensen",
+    "year": 2019,
+    "rating": 8.0,
+    "genre": "Drama"
+  },
+  {
+    "id": 172,
+    "title": "White Ember",
+    "director": "Stefan Novak",
+    "year": 2020,
+    "rating": 7.9,
+    "genre": "Thriller"
+  },
+  {
+    "id": 173,
+    "title": "Ashfall Requiem",
+    "director": "Liang Wu",
+    "year": 2025,
+    "rating": 8.7,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 174,
+    "title": "Sunset Mirage",
+    "director": "Katerina Dimitrova",
+    "year": 2004,
+    "rating": 7.4,
+    "genre": "Romance"
+  },
+  {
+    "id": 175,
+    "title": "Moonlight Mirage",
+    "director": "Ava Moretti",
+    "year": 2023,
+    "rating": 8.1,
+    "genre": "Sci-Fi Drama"
+  },
+  {
+    "id": 176,
+    "title": "The Clockmaker’s War",
+    "director": "Frederick Hale",
+    "year": 1948,
+    "rating": 7.4,
+    "genre": "Historical Thriller"
+  },
+  {
+    "id": 177,
+    "title": "Digital Ghosts",
+    "director": "Rhea Manning",
+    "year": 2019,
+    "rating": 7.9,
+    "genre": "Cyberpunk Horror"
+  },
+  {
+    "id": 178,
+    "title": "Cafe Cosmos",
+    "director": "Marco Bellini",
+    "year": 2007,
+    "rating": 7.2,
+    "genre": "Romantic Comedy"
+  },
+  {
+    "id": 179,
+    "title": "Shadowline",
+    "director": "June Wallace",
+    "year": 1998,
+    "rating": 7.6,
+    "genre": "Crime Drama"
+  },
+  {
+    "id": 180,
+    "title": "Voyage of the Red Planet",
+    "director": "Howard Keene",
+    "year": 1983,
+    "rating": 7.3,
+    "genre": "Adventure Sci-Fi"
+  },
+  {
+    "id": 181,
+    "title": "The 11th Symphony",
+    "director": "Anja Petrovic",
+    "year": 1966,
+    "rating": 7.8,
+    "genre": "Musical Drama"
+  },
+  {
+    "id": 182,
+    "title": "Neon Eden",
+    "director": "Rafael Cortez",
+    "year": 2021,
+    "rating": 8.0,
+    "genre": "Action Sci-Fi"
+  },
+  {
+    "id": 183,
+    "title": "Whispers in the Fog",
+    "director": "Eleanor Graves",
+    "year": 1952,
+    "rating": 7.1,
+    "genre": "Mystery"
+  },
+  {
+    "id": 184,
+    "title": "Glass Wings",
+    "director": "Tomás Ortega",
+    "year": 2004,
+    "rating": 7.5,
+    "genre": "Psychological Thriller"
+  },
+  {
+    "id": 185,
+    "title": "The Dog Who Knew the Future",
+    "director": "Molly Strauss",
+    "year": 1995,
+    "rating": 6.9,
+    "genre": "Family Comedy"
+  },
+  {
+    "id": 186,
+    "title": "Echoes of Atlantis",
+    "director": "Soren Dahl",
+    "year": 1979,
+    "rating": 7.4,
+    "genre": "Adventure Fantasy"
+  },
+  {
+    "id": 187,
+    "title": "Data Heaven",
+    "director": "Priya Kapoor",
+    "year": 2020,
+    "rating": 7.7,
+    "genre": "Techno Thriller"
+  },
+  {
+    "id": 188,
+    "title": "Paper Skies",
+    "director": "Lucie Fontaine",
+    "year": 2011,
+    "rating": 7.3,
+    "genre": "Romantic Drama"
+  },
+  {
+    "id": 189,
+    "title": "The Last Broadcast",
+    "director": "Gary Mitchell",
+    "year": 1999,
+    "rating": 7.0,
+    "genre": "Found Footage Horror"
+  },
+  {
+    "id": 190,
+    "title": "Sunset Samurai",
+    "director": "Keiichi Tanaka",
+    "year": 1971,
+    "rating": 7.9,
+    "genre": "Action Drama"
+  },
+  {
+    "id": 191,
+    "title": "Broken Frequency",
+    "director": "Zoe Ramirez",
+    "year": 2025,
+    "rating": 8.2,
+    "genre": "Sci-Fi Thriller"
+  },
+  {
+    "id": 192,
+    "title": "Crows Over Vienna",
+    "director": "Friedrich Lang",
+    "year": 1942,
+    "rating": 7.6,
+    "genre": "War Drama"
+  },
+  {
+    "id": 193,
+    "title": "Blue Lemonade",
+    "director": "Irene Novak",
+    "year": 2002,
+    "rating": 6.8,
+    "genre": "Indie Comedy"
+  },
+  {
+    "id": 194,
+    "title": "Dream Operators",
+    "director": "Miles Hargreaves",
+    "year": 2024,
+    "rating": 8.3,
+    "genre": "Neo-Noir Sci-Fi"
+  },
+  {
+    "id": 195,
+    "title": "The Girl with Two Shadows",
+    "director": "Alicia Voss",
+    "year": 2016,
+    "rating": 7.8,
+    "genre": "Supernatural Mystery"
+  },
+  {
+    "id": 196,
+    "title": "Runaway Pixels",
+    "director": "Hiroko Saito",
+    "year": 2022,
+    "rating": 7.1,
+    "genre": "Animated Adventure"
+  },
+  {
+    "id": 197,
+    "title": "Waltz of the Dead",
+    "director": "Agnes Koller",
+    "year": 1961,
+    "rating": 7.0,
+    "genre": "Gothic Horror"
+  },
+  {
+    "id": 198,
+    "title": "Snowfall Protocol",
+    "director": "Daniel Mercer",
+    "year": 2018,
+    "rating": 7.6,
+    "genre": "Spy Thriller"
+  },
+  {
+    "id": 199,
+    "title": "The Orchard Keeper",
+    "director": "Ethan Price",
+    "year": 1990,
+    "rating": 7.2,
+    "genre": "Rural Drama"
+  },
+  {
+    "id": 200,
+    "title": "Eclipse Protocol",
+    "director": "Nora Bellamy",
+    "year": 2025,
+    "rating": 8.0,
+    "genre": "Action Thriller"
   }
 ]
