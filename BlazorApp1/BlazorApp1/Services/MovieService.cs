@@ -1,109 +1,56 @@
-using System.Text.Json;
 using BlazorApp1.Data;
+using Microsoft.EntityFrameworkCore;
 
-namespace BlazorApp1.Services;
-
-public class MovieService
+namespace BlazorApp1.Services
 {
-    private readonly string _jsonFilePath;
-    private static readonly SemaphoreSlim _semaphore = new(1, 1);
-
-    public MovieService(IWebHostEnvironment env)
+    public class MovieService
     {
-        _jsonFilePath = Path.Combine(env.ContentRootPath, "movies.json");
-    }
+        private readonly MyMoviesDbContext _context;
 
-    private async Task<List<Movie>> ReadMoviesFromFileAsync()
-    {
-        if (!File.Exists(_jsonFilePath))
+        public MovieService(MyMoviesDbContext context)
         {
-            return new List<Movie>();
+            _context = context;
         }
 
-        var json = await File.ReadAllTextAsync(_jsonFilePath);
-        
-        if (string.IsNullOrWhiteSpace(json))
+        public async Task<List<Movie>> GetMoviesAsync()
         {
-            return new List<Movie>();
+            return await _context.Movies.AsNoTracking().ToListAsync();
         }
 
-        try
+        public async Task<Movie?> GetMovieByIdAsync(int id)
         {
-            return JsonSerializer.Deserialize<List<Movie>>(json, new JsonSerializerOptions
+            return await _context.Movies.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
+        }
+
+        public async Task AddMovieAsync(Movie movie)
+        {
+            await _context.Movies.AddAsync(movie);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateMovieAsync(Movie movieToUpdate)
+        {
+            var existing = await _context.Movies.FindAsync(movieToUpdate.Id);
+            if (existing is not null)
             {
-                PropertyNameCaseInsensitive = true
-            }) ?? new List<Movie>();
+                existing.Title = movieToUpdate.Title;
+                existing.Director = movieToUpdate.Director;
+                existing.Year = movieToUpdate.Year;
+                existing.Rating = movieToUpdate.Rating;
+                existing.Genre = movieToUpdate.Genre;
+
+                await _context.SaveChangesAsync();
+            }
         }
-        catch (JsonException)
-        {
-            var emptyList = new List<Movie>();
-            await WriteMoviesToFileAsync(emptyList);
-            return emptyList;
-        }
-    }
 
-    private async Task WriteMoviesToFileAsync(List<Movie> movies)
-    {
-        var options = new JsonSerializerOptions
+        public async Task DeleteMovieAsync(int id)
         {
-            WriteIndented = true,
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-        };
-        var json = JsonSerializer.Serialize(movies, options);
-        
-        await _semaphore.WaitAsync(); 
-        try
-        {
-            await File.WriteAllTextAsync(_jsonFilePath, json);
-        }
-        finally
-        {
-            _semaphore.Release(); 
-        }
-    }
-
-    public async Task<List<Movie>> GetMoviesAsync()
-    {
-        return await ReadMoviesFromFileAsync();
-    }
-
-    public async Task<Movie?> GetMovieByIdAsync(int id)
-    {
-        var movies = await ReadMoviesFromFileAsync();
-        return movies.FirstOrDefault(m => m.Id == id);
-    }
-
-    public async Task AddMovieAsync(Movie movie)
-    {
-        var movies = await ReadMoviesFromFileAsync();
-        movie.Id = movies.Any() ? movies.Max(m => m.Id) + 1 : 1;
-        movies.Add(movie);
-        await WriteMoviesToFileAsync(movies);
-    }
-
-    public async Task UpdateMovieAsync(Movie movieToUpdate)
-    {
-        var movies = await ReadMoviesFromFileAsync();
-        var movie = movies.FirstOrDefault(m => m.Id == movieToUpdate.Id);
-        if (movie != null)
-        {
-            movie.Title = movieToUpdate.Title;
-            movie.Director = movieToUpdate.Director;
-            movie.Year = movieToUpdate.Year;
-            movie.Rating = movieToUpdate.Rating;
-            movie.Genre = movieToUpdate.Genre;
-            await WriteMoviesToFileAsync(movies);
-        }
-    }
-
-    public async Task DeleteMovieAsync(int id)
-    {
-        var movies = await ReadMoviesFromFileAsync();
-        var movie = movies.FirstOrDefault(m => m.Id == id);
-        if (movie != null)
-        {
-            movies.Remove(movie);
-            await WriteMoviesToFileAsync(movies);
+            var movie = await _context.Movies.FindAsync(id);
+            if (movie is not null)
+            {
+                _context.Movies.Remove(movie);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

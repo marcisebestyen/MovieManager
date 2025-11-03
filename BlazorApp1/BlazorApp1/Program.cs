@@ -1,11 +1,15 @@
-using BlazorApp1.Services; 
+using BlazorApp1.Data;
+using BlazorApp1.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents(); 
+    .AddInteractiveServerComponents();
 
-builder.Services.AddSingleton<MovieService>();
+builder.Services.AddScoped<MovieService>();
+builder.Services.AddDbContext<MyMoviesDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
@@ -20,6 +24,6 @@ app.UseStaticFiles();
 app.UseAntiforgery();
 
 app.MapRazorComponents<BlazorApp1.Components.App>()
-    .AddInteractiveServerRenderMode(); 
+    .AddInteractiveServerRenderMode();
 
 app.Run();
